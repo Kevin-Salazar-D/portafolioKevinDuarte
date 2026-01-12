@@ -45,7 +45,7 @@ function App() {
             limpio.
           </p>
 
-          <a href="/cvKevinDuarte.pdf" download className="btn-cv">
+          <a href={`${import.meta.env.BASE_URL}cvKevinDuarte.pdf`} download className="btn-cv">
             Descargar CV <FiDownload />
           </a>
 
