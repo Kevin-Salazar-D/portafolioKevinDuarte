@@ -1,0 +1,143 @@
+
+.menu {
+  display: flex;
+  align-items: center;
+  height: 80px;
+  padding: 0 60px;
+
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+  position: fixed;
+  width: 95%;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo a {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+  font-weight: 800; 
+  transition: all 0.3s ease; 
+}
+
+
+.logo a:hover {
+  background: linear-gradient(90deg, #ffffff 0%, rgb(68, 183, 250) 100%);
+  
+  -webkit-background-clip: text;
+  background-clip: text;
+  
+  -webkit-text-fill-color: transparent;
+  color: transparent; 
+}
+
+.menu-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  margin-left: auto;
+}
+
+
+.menu-links {
+  display: flex;
+  gap: 30px;
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  font-size: 20px;
+}
+
+.menu-links a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.menu-links a:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+
+.hamburger {
+  display: none;
+
+  width: 45px;
+  height: 45px;
+
+  background: rgba(255, 255, 255, 0.03);
+  font-size: 25px;
+  color: rgba(255, 255, 255, 0.8);
+
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  margin-right: 15px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+}
+
+.hamburger:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+
+@media (max-width: 843px) {
+
+  .menu {
+    padding: 0 20px; 
+  }
+
+  .menu-links {
+    position: absolute;
+    top: 80px;
+    right: 10px;
+
+    flex-direction: column;
+    gap: 20px;
+
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(15px);
+
+    padding: 20px;
+    border-radius: 12px;
+
+    display: none;
+  }
+
+.menu-links.open {
+  display: flex;
+
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  margin-right: 15px;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 10px;
+}
+
+  .hamburger {
+    display: flex;
+  }
+}
