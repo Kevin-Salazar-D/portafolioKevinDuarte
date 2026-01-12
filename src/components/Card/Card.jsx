@@ -9,11 +9,11 @@ const Card = ({
   typeApp,
   tags = [],
   // Recibimos las props de tamaño (por defecto son 1x1)
-  gridCols = "span 1", 
+  gridCols = "span 1",
   gridRows = "span 1",
   linkDemo = "#",
   linkRepo = "#",
-  onClick 
+  onClick,
 }) => {
   return (
     <div
@@ -21,11 +21,15 @@ const Card = ({
       onClick={onClick}
       style={{
         "--desktop-col": gridCols,
-        "--desktop-row": gridRows
+        "--desktop-row": gridRows,
       }}
     >
       <div className="card-image-wrapper">
-        <img src={img} alt={title} className="card-image" />
+        <img
+          src={`${import.meta.env.BASE_URL}${img}`}
+          alt={title}
+          className="card-image"
+        />
         <div className="card-overlay"></div>
       </div>
 

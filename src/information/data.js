@@ -1,7 +1,7 @@
 const data = [
   {
-    img: "./public/agenciaViajes.webp",
-    imagenModal: "./public/agenciaViajes1.webp",
+    img: "agenciaViajes.webp",
+    imagenModal: "agenciaViajes1.webp",
     title: "Agencia de Viajes",
     description:
       "Aplicación web full-stack para la gestión de agencias de viajes.",
@@ -18,8 +18,8 @@ const data = [
     gridRows: "span 2",
   },
   {
-    img: "./public/soleMate.webp",
-    imagenModal: "./public/soleMate1.webp",
+    img: "soleMate.webp",
+    imagenModal: "soleMate1.webp",
     title: "Sole Mate",
     description:
       "Plataforma web para la gestión y administración de un e-commerce de calzado.",
@@ -36,8 +36,8 @@ const data = [
     gridRows: "span 1",
   },
   {
-    img: "./public/click.webp",
-    imagenModal: "./public/click1.webp",
+    img: "click.webp",
+    imagenModal: "click1.webp",
     title: "Click",
     description: "Red Social",
     aboutProject:
