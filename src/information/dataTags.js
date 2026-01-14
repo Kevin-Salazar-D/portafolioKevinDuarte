@@ -1,6 +1,7 @@
 const dataTags = [
   {
-    title: "Lenguajes",
+    es: { title: "Lenguajes" },
+    en: { title: "Languages" },
     gridCols: "span 1",
     gridRows: "span 2",
     icons: [
@@ -10,11 +11,12 @@ const dataTags = [
       { name: "C++", icon: "cpp" },
       { name: "C", icon: "c" },
       { name: "Python", icon: "python" },
-      { name: "PHP", icon: "php" }
-    ]
+      { name: "PHP", icon: "php" },
+    ],
   },
   {
-    title: "Front-end",
+    es: { title: "Front-end" },
+    en: { title: "Front-end" },
     gridCols: "span 1",
     gridRows: "span 1",
     icons: [
@@ -22,11 +24,12 @@ const dataTags = [
       { name: "CSS", icon: "css" },
       { name: "React JS", icon: "react" },
       { name: "Redux Toolkit", icon: "redux" },
-      { name: "Material UI", icon: "material" }
-    ]
+      { name: "Material UI", icon: "material" },
+    ],
   },
   {
-    title: "Back-end",
+    es: { title: "Back-end" },
+    en: { title: "Back-end" },
     gridCols: "span 1",
     gridRows: "span 1",
     icons: [
@@ -34,11 +37,12 @@ const dataTags = [
       { name: "Express JS", icon: "express" },
       { name: "MySQL", icon: "mysql" },
       { name: "Firebase", icon: "firebase" },
-      { name: "SQLite", icon: "sqlite" }
-    ]
+      { name: "SQLite", icon: "sqlite" },
+    ],
   },
   {
-    title: "Herramientas",
+    es: { title: "Herramientas" },
+    en: { title: "Tools" },
     gridCols: "span 2",
     gridRows: "span 1",
     icons: [
@@ -47,9 +51,9 @@ const dataTags = [
       { name: "Swagger", icon: "swagger" },
       { name: "Docker", icon: "docker" },
       { name: "Linux", icon: "linux" },
-      { name: "Postman", icon: "postman" }
-    ]
-  }
+      { name: "Postman", icon: "postman" },
+    ],
+  },
 ];
 
 export default dataTags;

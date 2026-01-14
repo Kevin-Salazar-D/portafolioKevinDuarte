@@ -1,6 +1,15 @@
 import { useEffect } from "react";
+
+//css
 import "../../style/modal.css";
+
+//iconos
 import techIcons from "../../information/icons.js";
+
+//hook
+import { useLanguage } from "../../context/LanguageContext.jsx";
+
+import { texts } from "../../information/text.js";
 
 const Modal = ({
   isOpen,
@@ -13,6 +22,9 @@ const Modal = ({
   tags = [],
   linkGit = "#",
 }) => {
+
+  const {lang} = useLanguage();
+  const traslate = texts.projects[lang];
 useEffect(() => {
    
     let frozen = isOpen ? "hidden" : "unset";
@@ -73,7 +85,7 @@ useEffect(() => {
               <section className="modal-text-block">
                 <div className="block-title">
                   {CodeIcon && <CodeIcon size={18} />}
-                  <span>Sobre el proyecto</span>
+                  <span>{traslate.aboutProject}</span>
                 </div>
                 <p>{aboutProject}</p>
               </section>
@@ -81,7 +93,7 @@ useEffect(() => {
               <section className="modal-text-block">
                 <div className="block-title">
                   {CodeIcon && <CodeIcon size={18} />}
-                  <span>Desafíos técnicos</span>
+                  <span>{traslate.technicalChallenge}</span>
                 </div>
                 <p>{technicalChallenge}</p>
               </section>
@@ -95,7 +107,7 @@ useEffect(() => {
                 className="action-link github"
               >
                 {GithubIcon && <GithubIcon size={18} />}
-                <span>Ver código</span>
+                <span>{traslate.viewCode}</span>
               </a>
             </footer>
           </div>

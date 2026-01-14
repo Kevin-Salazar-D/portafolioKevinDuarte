@@ -5,12 +5,16 @@ import {
   FaNodeJs,
   FaCss3Alt,
   FaJsSquare,
+  FaEnvelope,
+  FaLinkedin
 } from "react-icons/fa";
-
 import { FaTimes } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { SiCplusplus } from "react-icons/si";
 import { FaJava } from "react-icons/fa";
+
+import { FiDownload } from "react-icons/fi";
+
 
 import {
   SiMysql,
@@ -67,7 +71,10 @@ const icons = {
   // Extras
   link: FaExternalLinkAlt,
   close: FaTimes,
-  x: FaXTwitter
+  x: FaXTwitter,
+  dowloand: FiDownload,
+  linkedin: FaLinkedin,
+  envelpo :FaEnvelope
 };
 
 export default icons;
