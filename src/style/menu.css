@@ -18,15 +18,6 @@
 }
 
 .logo a {
-  text-decoration: none;
-  color: white;
-  cursor: pointer;
-  font-weight: 800; 
-  transition: all 0.3s ease; 
-}
-
-
-.logo a:hover {
   background: linear-gradient(90deg, #ffffff 0%, rgb(68, 183, 250) 100%);
   
   -webkit-background-clip: text;
@@ -35,6 +26,9 @@
   -webkit-text-fill-color: transparent;
   color: transparent; 
 }
+
+
+
 
 .menu-right {
   display: flex;
@@ -72,6 +66,55 @@
   transform: translateY(-2px);
 }
 
+.lang-switch {
+  background: rgba(255, 255, 255, 0.05); /* Fondo sutil como tus tech-pills */
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  padding: 0.5rem 1rem;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.8rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  min-width: 55px;
+ gap: 0.5rem;
+}
+
+.lang-switch:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  border: 1px solid #ffffff;
+}
+
+
+
+.lang-option {
+  display: inline-block;
+  letter-spacing: 1px;
+  transition: transform 0.3s ease;
+}
+
+.lang-switch:active .lang-option {
+  transform: scale(0.9);
+}
+
+/* Opcional: Un pequeño punto indicador */
+.lang-switch::after {
+  content: '';
+  width: 4px;
+  height: 4px;
+  background: var(--primary);
+  border-radius: 50%;
+  margin-left: 2px;
+  opacity: 0.6;
+}
 
 .hamburger {
   display: none;
@@ -127,12 +170,12 @@
 .menu-links.open {
   display: flex;
 
-  background: rgba(255, 255, 255, 0.03);
+   background: rgba(15, 23, 42, 0.95);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   margin-right: 15px;
   font-size: 20px;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgb(255, 255, 255);
   border: 1px solid rgba(255, 255, 255, 0.1);
   margin-top: 10px;
 }
@@ -140,4 +183,11 @@
   .hamburger {
     display: flex;
   }
+  .logo a {
+    font-size: 27px;
+  }
+  .lang-switch {
+  margin-left: 10px;
+}
+
 }

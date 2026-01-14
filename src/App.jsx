@@ -1,22 +1,37 @@
+import { useState } from "react";
+
+//componertes
 import Menu from "./components/menu/menu";
 import Card from "./components/Card/Card";
 import Modal from "./components/Modal/Modal.jsx";
 import CardInformation from "./components/CardInformation/CardInformation.jsx";
 import Footer from "./components/footer/footer.jsx";
 
-import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
-import { FiDownload } from "react-icons/fi";
-
-import data from "./information/data.js";
+import data from "./information/carData.js";
 import dataTags from "./information/dataTags.js";
+import icons from "./information/icons.js";
+
+//imagenes
 import venteks from "./assets/venteks.webp";
 import about from "./assets/about.gif";
+// CSS
 import "./App.css";
-import { useState } from "react";
+//hoks
+import { useLanguage } from "./context/LanguageContext.jsx";
+import { texts } from "./information/text.js";
+
+import renderText from "./utils/renderText.jsx";
 
 function App() {
   const [information, setInformation] = useState([]);
   const [open, setOpen] = useState(false);
+
+  const { lang } = useLanguage();
+
+  const traslateP = texts.presentation[lang];
+  const traslateE = texts.experience[lang];
+  const traslateA = texts.aboutMe[lang];
+  const tralateF = texts.footer[lang];
 
   const handleProjectClick = (p) => {
     setInformation(p);
@@ -36,17 +51,18 @@ function App() {
 
       <main>
         <section id="home" className="hero">
-          <span className="hero-role">Full Stack Developer</span>
-          <h1 className="hero-name">Kevin Duarte</h1>
+          <span className="hero-role">{traslateP.role}</span>
+          <h1 className="hero-name">{traslateP.name}</h1>
           <p className="hero-description">
-            Desarrollador de software con 1 año de <strong>experiencia</strong>{" "}
-            desarrollando aplicaciones web modernas con <strong>React</strong> y{" "}
-            <strong>Node.js</strong>. Enfocado en buenas prácticas y código
-            limpio.
+            {renderText(traslateP.description)}
           </p>
 
-          <a href={`${import.meta.env.BASE_URL}cvKevinDuarte.pdf`} download className="btn-cv">
-            Descargar CV <FiDownload />
+          <a
+            href={`${import.meta.env.BASE_URL}cvKevinDuarte.pdf`}
+            download
+            className="btn-cv"
+          >
+            {traslateP.dowloand} <icons.dowloand />
           </a>
 
           <div className="hero-contact">
@@ -57,7 +73,7 @@ function App() {
               className="btn primary"
               aria-label="GitHub"
             >
-              <FaGithub />
+              <icons.github />
             </a>
             <a
               href="https://www.linkedin.com/in/kevin-salazar-40a523244/"
@@ -66,21 +82,21 @@ function App() {
               className="btn primary"
               aria-label="LinkedIn"
             >
-              <FaLinkedin />
+              <icons.linkedin />
             </a>
             <a
               href="mailto:kevinyahirsalazar342@gmail.com"
               className="btn primary"
               aria-label="Email"
             >
-              <FaEnvelope />
+              <icons.envelpo />
             </a>
           </div>
         </section>
 
         {/* SECCIÓN EXPERIENCIA */}
         <section id="experience" className="hero-experience">
-          <h2 className="section-title">Experiencia Profesional</h2>
+          <h2 className="section-title">{traslateE.title}</h2>
 
           <article className="experience-item">
             <header className="experience-header">
@@ -91,60 +107,60 @@ function App() {
                   className="company-logo"
                 />
                 <div>
-                  <h3 className="job-title">Desarrollador Web Becario</h3>
-                  <span className="company-name">Venteks</span>
+                  <h3 className="job-title">{traslateE.role}</h3>
+                  <span className="company-name">{traslateE.company}</span>
                 </div>
               </div>
-              <time className="experience-date">Sept. 2024 — Sept. 2025</time>
+              <time className="experience-date">{traslateE.date}</time>
             </header>
 
             <div className="experience-details">
               <ul>
-                <li>
-                  Desarrollo de interfaces con <strong>React</strong>,{" "}
-                  <strong>Redux Toolkit</strong> y Material UI, consumiendo APIs
-                  REST.
-                </li>
-                <li>
-                  Optimización y mantenimiento de código para mejorar el
-                  rendimiento y escalabilidad.
-                </li>
-                <li>
-                  Desarrollo backend con <strong>Node.js</strong> y Express bajo
-                  arquitectura <strong>MVC</strong>.
-                </li>
-                <li>
-                  Gestión de bases de datos <strong>MySQL</strong> y{" "}
-                  <strong>Firebase</strong>, con documentación en Swagger.
-                </li>
+                {traslateE.activities.map((activity, i) => {
+                  return <li key={i}>{renderText(activity)}</li>;
+                })}
               </ul>
             </div>
           </article>
         </section>
         {/*Seccion de proyeectos */}
         <section id="projects" className="projects-section">
-          <h2 className="section-title">Proyectos</h2>
+          <h2 className="section-title">
+            {texts.projects[lang].title}
+          </h2>
 
           <div className="bento-grid">
-            {data.map((p, i) => (
-              <Card
-                key={i}
-                img={p.img}
-                title={p.title}
-                description={p.description}
-                typeApp={p.typeApp}
-                linkRepo={p.linkRepo}
-                tags={p.tags}
-                gridCols={p.gridCols}
-                gridRows={p.gridRows}
-                onClick={() => handleProjectClick(p)}
-              />
-            ))}
+            {data.map((p, i) => {
+              const project = p[lang];
+              //creamos un objeto con la informacio a obtener por el modal
+              const objectModal = {
+                ...project,
+                imageModal: p.imageModal,
+                tags: p.tags,
+                linkRepo: p.linkRepo,
+                typeApp: project.typeApp,
+              };
+
+              return (
+                <Card
+                  key={i}
+                  img={p.img}
+                  title={project.title}
+                  description={project.description}
+                  typeApp={project.typeApp}
+                  tags={p.tags}
+                  linkRepo={p.linkRepo}
+                  gridCols={p.gridCols}
+                  gridRows={p.gridRows}
+                  onClick={() => handleProjectClick(objectModal)}
+                />
+              );
+            })}
           </div>
         </section>
 
         <section id="about" className="about-section">
-          <h2 className="section-title">Sobre mí</h2>
+          <h2 className="section-title">{traslateA.title}</h2>
 
           <div className="about-container">
             <div className="about-container-img">
@@ -158,22 +174,10 @@ function App() {
             <div className="about-container-details">
               <article>
                 <p>
-                  Soy{" "}
-                  <strong>
-                    Desarrollador Full Stack con un año de experiencia
-                  </strong>{" "}
-                  en el desarrollo de aplicaciones web.
-                  <strong> Me considero una persona autodidacta</strong> que le
-                  gusta aprender sobre tecnología y todo lo relacionado con la
-                  programación.
+                 {renderText(traslateA.description)}
                 </p>
                 <p>
-                  He trabajado principalmente como{" "}
-                  <strong>desarrollador web</strong>, pero me gusta usar más
-                  lenguajes de programación y no quedarme en un solo rubro, sino
-                  experimentar. Además del desarrollo web, he utilizado{" "}
-                  <strong>Java</strong>, <strong>C++</strong> y{" "}
-                  <strong>Python</strong>.
+                  {renderText(traslateA.description2)}
                 </p>
               </article>
             </div>
@@ -185,22 +189,23 @@ function App() {
           <h2 className="section-title">Skills</h2>
 
           <div className="tech-grid">
-            {dataTags.map((tech, index) => (
-              <CardInformation
-                key={index}
-                title={tech.title}
-                icons={tech.icons}
-                gridCols={tech.gridCols}
-                gridRows={tech.gridRows}
-              />
-            ))}
-          </div>
+  {dataTags.map((tech, index) => (
+    <CardInformation
+      key={index}
+      title={tech[lang].title}
+      icons={tech.icons}
+      gridCols={tech.gridCols}
+      gridRows={tech.gridRows}
+    />
+  ))}
+</div>
+
         </section>
 
         <Modal
           isOpen={open}
           onClose={handleCloseModal}
-          img={information.imagenModal}
+          img={information.imageModal}
           title={information.title}
           aboutProject={information.aboutProject}
           technicalChallenge={information.technicalChallenge}
@@ -212,7 +217,7 @@ function App() {
       <Footer
         title={
           <>
-            ¿Te interesó mi trabajo? <strong>Hablemos.</strong>
+            {tralateF.title}
           </>
         }
         linkRepo="https://github.com/Kevin-Salazar-D"
