@@ -43,6 +43,11 @@ function App() {
     setInformation([]);
   };
 
+  const traslateCV = (lang) =>{
+    const file = lang === "es" ? `cvv_Kevin_Duarte_Spanish.pdf` : `cvv_Kevin_Duarte_English.pdf`;
+    return `${import.meta.env.BASE_URL}${file}`;
+  }
+
   return (
     <>
       <header>
@@ -58,7 +63,7 @@ function App() {
           </p>
 
           <a
-            href={`${import.meta.env.BASE_URL}cvKevinDuarte.pdf`}
+            href={traslateCV(lang)}
             download
             className="btn-cv"
           >
